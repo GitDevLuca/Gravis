@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Gravis Notenmanager</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- Login -->
+  <div id="loginForm">
+    <h2>Login</h2>
+    <input type="text" id="username" placeholder="Benutzername" />
+    <input type="password" id="password" placeholder="Passwort" />
+    <button id="submitLogin">Einloggen</button>
+    <p id="loginError" class="error">Falsche Anmeldedaten!</p>
+  </div>
+
+  <!-- Hauptbereich -->
+  <div id="notenManager" style="display:none;">
+    <div class="top-bar">
+      <h2>Gravis Notenmanager</h2>
+      <button id="logoutButton">Logout</button>
+    </div>
+
+    <div class="fach-erstellen">
+      <input type="text" id="fachNameInput" placeholder="Fachname" />
+      <select id="kategorieSelect">
+        <option disabled selected>Bitte auswählen</option>
+        <option value="Module">Module</option>
+        <option value="Allgemeinbildung">Allgemeinbildung</option>
+        <option value="Englisch">Englisch</option>
+        <option value="Mathematik">Mathematik</option>
+        <option value="Sport">Sport</option>
+      </select>
+      
+      <button onclick="fachHinzufuegen()">Fach hinzufügen</button>
+    </div>
+
+    <div id="fachListeContainer"></div>
+  </div>
+
+  <!-- Noten-Details -->
+  <div id="notenDetails" style="display:none;">
+    <h3>Noten für <span id="fachNameDetails"></span></h3>
+    <ul id="notenListeDetails"></ul>
+    <input type="number" id="noteInput" placeholder="Note (1 - 6)" step="0.1" />
+    <input type="number" id="gewichtungInput" placeholder="Gewichtung %" />
+    <button id="noteHinzufuegenButton">Note hinzufügen</button>
+    <button id="backButton">Zurück</button>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
