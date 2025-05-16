@@ -13,9 +13,50 @@ const submitRegister = document.getElementById('submitRegister');
 const loginError = document.getElementById('loginError');
 const registerrror = document.getElementById('registerError');
 const error = document.getElementsByClassName('error');
+const darkModeToggle = document.getElementById('darkModeToggle');
 
 const fachListeContainer = document.getElementById('fachListeContainer');
 
+// Dark Mode Toggle Functionality
+function applyTheme(theme) {
+  if (theme === 'dark') {
+    document.body.classList.remove('body-light');
+    document.body.classList.add('body-dark');
+  } else {
+    document.body.classList.remove('body-dark');
+    document.body.classList.add('body-light');
+  }
+}
+
+darkModeToggle.addEventListener('change', () => {
+  if (darkModeToggle.selected) {
+    localStorage.setItem('theme', 'dark');
+    applyTheme('dark');
+  } else {
+    localStorage.setItem('theme', 'light');
+    applyTheme('light');
+  }
+});
+
+// Check for saved theme on page load
+document.addEventListener('DOMContentLoaded', () => {
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme === 'dark') {
+    darkModeToggle.selected = true;
+    applyTheme('dark');
+  } else {
+    // Default to light theme if no preference or preference is light
+    darkModeToggle.selected = false;
+    applyTheme('light'); // Ensure light theme is applied if no saved preference
+  }
+
+  // Ensure body always starts with one of the theme classes
+  if (!document.body.classList.contains('body-light') && !document.body.classList.contains('body-dark')) {
+    document.body.classList.add('body-light'); // Default to light
+  }
+});
+
+// Initialisieren der Noten
 let noten = {};
 let aktuellesFach = '';
 
@@ -66,7 +107,7 @@ submitRegister.onclick = () => {
 
 // Logout
 logoutButton.onclick = () => {
-  loginForm.style.display = 'block';
+  loginForm.style.display = 'flex';
   notenManager.style.display = 'none';
   document.getElementById('notenDetails').style.display = 'none';
 };

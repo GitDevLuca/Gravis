@@ -24,10 +24,13 @@
       document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
     </script>
   </head>
-  <body>
 
-
-    <!--DOCS: https://github.com/material-components/material-web/tree/main/docs/components -->
+  <!--DOCS: https://github.com/material-components/material-web/tree/main/docs/components -->
+  <body class="body-light">
+    <div id="darkModeToggleContainer">
+      <label for="darkModeToggle">Dark Mode</label>
+      <md-switch id="darkModeToggle"></md-switch>
+    </div>
 
     <!-- Login -->
     <div id="loginForm">
