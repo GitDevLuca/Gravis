@@ -6,7 +6,7 @@
   }
   
   body {
-    font-family: 'Arial', sans-serif;
+    font-family: 'Roboto', sans-serif;
     background-color: #f4f7fc;
     display: flex;
     justify-content: center;
@@ -16,7 +16,10 @@
   }
   
   /* Login-Styling */
-  #loginForm {
+  #loginForm, #registerForm {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
     background: #fff;
     padding: 20px;
     border-radius: 10px;
@@ -24,38 +27,13 @@
     width: 300px;
     text-align: center;
   }
-  
-  #loginForm h2 {
-    color: #333;
-    margin-bottom: 20px;
+
+  #registerForm {
+    display: none;
   }
   
-  #loginForm input {
-    width: 80%;
-    padding: 12px;
-    margin: 10px 0;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
-  }
-  
-  #loginForm button {
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    padding: 12px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
-    transition: background-color 0.3s ease;
-  }
-  
-  #loginForm button:hover {
-    background-color: #0056b3;
-  }
-  
-  #error {
-    color: red;
+  .error {
+    color: red!important;
     display: none;
     margin-top: 10px;
   }

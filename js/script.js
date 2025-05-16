@@ -6,13 +6,25 @@ const passwort = '1234';
 const loginForm = document.getElementById('loginForm');
 const notenManager = document.getElementById('notenManager');
 const logoutButton = document.getElementById('logoutButton');
+const gotoLogin = document.getElementById('gotoLogin');
 const submitLogin = document.getElementById('submitLogin');
+const gotoRegister = document.getElementById('gotoRegister');
+const submitRegister = document.getElementById('submitRegister');
 const loginError = document.getElementById('loginError');
+const registerrror = document.getElementById('registerError');
+const error = document.getElementsByClassName('error');
 
 const fachListeContainer = document.getElementById('fachListeContainer');
 
 let noten = {};
 let aktuellesFach = '';
+
+// Go To Login
+gotoLogin.onclick = () => {
+  registerForm.style.display = 'none';
+  loginForm.style.display = 'flex';
+  loginError.style.display = 'none';
+};
 
 // Login
 submitLogin.onclick = () => {
@@ -23,8 +35,32 @@ submitLogin.onclick = () => {
     loginForm.style.display = 'none';
     notenManager.style.display = 'block';
     loginError.style.display = 'none';
+    error.style.display = 'none';
   } else {
     loginError.style.display = 'block';
+  }
+};
+
+// Go To Registrierung
+gotoRegister.onclick = () => {
+  registerForm.style.display = 'flex';
+  loginForm.style.display = 'none';
+  registerError.style.display = 'none';
+};
+
+// Registrierung
+submitRegister.onclick = () => {
+  const registeruser = document.getElementById('registerusername').value;
+  const registerpw = document.getElementById('registerpassword').value;
+  const registerpwrepeat = document.getElementById('registerpasswordrepeat').value;
+
+  if (registerpw === registerpwrepeat) {
+    registerForm.style.display = 'none';
+    loginForm.style.display = 'flex';
+    registerError.style.display = 'none';
+    error.style.display = 'none';
+  } else {
+    registerError.style.display = 'block';
   }
 };
 

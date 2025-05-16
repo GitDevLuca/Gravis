@@ -1,56 +1,89 @@
 <!DOCTYPE html>
 <html lang="de">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Gravis Notenmanager</title>
-  <link rel="stylesheet" href="css/style.css" />
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Gravis Notenmanager</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"/>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"/>
+    <link rel="stylesheet" href="css/style.css" />
 
-  <!-- Login -->
-  <div id="loginForm">
-    <h2>Login</h2>
-    <input type="text" id="username" placeholder="Benutzername" />
-    <input type="password" id="password" placeholder="Passwort" />
-    <button id="submitLogin">Einloggen</button>
-    <p id="loginError" class="error">Falsche Anmeldedaten!</p>
-  </div>
+    <script type="importmap">
+      {
+        "imports": {
+          "@material/web/": "https://esm.run/@material/web/"
+        }
+      }
+    </script>
+    <script type="module">
+      import '@material/web/all.js';
+      import {styles as typescaleStyles} from '@material/web/typography/md-typescale-styles.js';
 
-  <!-- Hauptbereich -->
-  <div id="notenManager" style="display:none;">
-    <div class="top-bar">
-      <h2>Gravis Notenmanager</h2>
-      <button id="logoutButton">Logout</button>
+      document.adoptedStyleSheets.push(typescaleStyles.styleSheet);
+    </script>
+  </head>
+  <body>
+
+
+    <!--DOCS: https://github.com/material-components/material-web/tree/main/docs/components -->
+
+    <!-- Login -->
+    <div id="loginForm">
+      <h2 class="md-typescale-display-small">Login</h2>
+      <md-outlined-text-field label="Benutzername" id="username"></md-outlined-text-field>
+      <md-outlined-text-field label="Passwort" id="password"></md-outlined-text-field>
+      <md-filled-button id="submitLogin">Einloggen</md-filled-button>
+      <md-outlined-button id="gotoRegister">Registrieren</md-outlined-button>
+      <p id="loginError" class="error">Falsche Anmeldedaten!</p>
     </div>
 
-    <div class="fach-erstellen">
-      <input type="text" id="fachNameInput" placeholder="Fachname" />
-      <select id="kategorieSelect">
-        <option disabled selected>Bitte auswählen</option>
-        <option value="Module">Module</option>
-        <option value="Allgemeinbildung">Allgemeinbildung</option>
-        <option value="Englisch">Englisch</option>
-        <option value="Mathematik">Mathematik</option>
-        <option value="Sport">Sport</option>
-      </select>
-      
-      <button onclick="fachHinzufuegen()">Fach hinzufügen</button>
+    <!-- Registrieren -->
+    <div id="registerForm">
+      <h2 class="md-typescale-display-small">Registrieren</h2>
+      <md-outlined-text-field label="Benutzername" id="registerusername"></md-outlined-text-field>
+      <md-outlined-text-field label="Passwort" id="registerpassword" type="password"></md-outlined-text-field>
+      <md-outlined-text-field label="PW erneut eingeben" id="registerpasswordrepeat" type="password"></md-outlined-text-field>
+      <md-filled-button id="submitRegister">Registrieren</md-filled-button>
+      <md-outlined-button id="gotoLogin">Einloggen</md-outlined-button>
+      <p id="registerError" class="error">Ein Fehler ist aufgetreten</p>
     </div>
 
-    <div id="fachListeContainer"></div>
-  </div>
+    <!-- Hauptbereich -->
+    <div id="notenManager" style="display:none;">
+      <div class="top-bar">
+        <h2>Gravis Notenmanager</h2>
+        <button id="logoutButton">Logout</button>
+      </div>
 
-  <!-- Noten-Details -->
-  <div id="notenDetails" style="display:none;">
-    <h3>Noten für <span id="fachNameDetails"></span></h3>
-    <ul id="notenListeDetails"></ul>
-    <input type="number" id="noteInput" placeholder="Note (1 - 6)" step="0.1" />
-    <input type="number" id="gewichtungInput" placeholder="Gewichtung %" />
-    <button id="noteHinzufuegenButton">Note hinzufügen</button>
-    <button id="backButton">Zurück</button>
-  </div>
+      <div class="fach-erstellen">
+        <input type="text" id="fachNameInput" placeholder="Fachname" />
+        <select id="kategorieSelect">
+          <option disabled selected>Bitte auswählen</option>
+          <option value="Module">Module</option>
+          <option value="Allgemeinbildung">Allgemeinbildung</option>
+          <option value="Englisch">Englisch</option>
+          <option value="Mathematik">Mathematik</option>
+          <option value="Sport">Sport</option>
+        </select>
+        
+        <button onclick="fachHinzufuegen()">Fach hinzufügen</button>
+      </div>
 
-  <script src="js/script.js"></script>
-</body>
+      <div id="fachListeContainer"></div>
+    </div>
+
+    <!-- Noten-Details -->
+    <div id="notenDetails" style="display:none;">
+      <h3>Noten für <span id="fachNameDetails"></span></h3>
+      <ul id="notenListeDetails"></ul>
+      <input type="number" id="noteInput" placeholder="Note (1 - 6)" step="0.1" />
+      <input type="number" id="gewichtungInput" placeholder="Gewichtung %" />
+      <button id="noteHinzufuegenButton">Note hinzufügen</button>
+      <button id="backButton">Zurück</button>
+    </div>
+
+    <script src="js/script.js"></script>
+  </body>
 </html>
