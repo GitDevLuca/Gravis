@@ -1,9 +1,11 @@
 /* Grundlegendes Styling */
+@import url("https://fonts.googleapis.com/css?family=Material+Icons");
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-  }
+}
   
 body {
   font-family: 'Roboto', sans-serif;
@@ -11,9 +13,31 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column-reverse;
+
   height: 100vh;
   margin: 0;
   transition: background-color 0.3s ease, color 0.3s ease; /* Smooth transition */
+}
+
+#darkModeToggleContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+  gap: 10px;
+  background: var(--md-sys-color-surface-container-highest, #fff); /* Use MD token */
+  color: var(--md-sys-color-on-surface, #000); /* Use MD token */
+  padding: 10px;
+  border-radius: 15px;
+  box-shadow: 0 0px 10px 5px rgb(0 0 0 / 25%);
+  width: 200px;
+  margin-top: 20px;
+}
+
+#darkModeToggleContainer label {
+  display: flex;
+  align-items: center;
 }
 
 /* Login-Styling */
@@ -24,7 +48,7 @@ body {
   background: var(--md-sys-color-surface-container-highest, #fff); /* Use MD token */
   color: var(--md-sys-color-on-surface, #000); /* Use MD token */
   padding: 20px;
-  border-radius: 10px;
+  border-radius: 15px;
   box-shadow: 0 0px 10px 5px rgb(0 0 0 / 25%);
   width: 300px;
   text-align: center;
@@ -111,7 +135,7 @@ body {
   background: var(--md-sys-color-surface-container, #fff); /* Use MD token */
   color: var(--md-sys-color-on-surface, #000); /* Use MD token */
   padding: 15px;
-  border-radius: 10px;
+  border-radius: 15px;
   box-shadow: 0 0px 10px 5px rgb(0 0 0 / 25%);
 }
 
@@ -286,4 +310,15 @@ body {
   /* You might not need these if components correctly use on-surface, on-primary etc. based on the system tokens above */
 
   --md-filled-tonal-button-container-color: #705ba0;
+  --theme-box-shadow-dark: 0 0px 10px 5px rgba(255, 255, 255, 25%);
+}
+
+.body-dark #loginForm,
+.body-dark #registerForm,
+.body-dark #notenManager,
+.body-dark .kategorie-block,
+.body-dark #notenDetails,
+.body-dark #darkModeToggleContainer{
+  /* Original: box-shadow: 0 0px 10px 5px rgb(0 0 0 / 25%); */
+  box-shadow: var(--theme-box-shadow-dark);
 }
