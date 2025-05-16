@@ -1,6 +1,6 @@
 // Login-Daten
-const benutzername = '1';
-const passwort = '';
+const benutzername = 'admin';
+const passwort = '1234';
 
 // DOM-Elemente
 const loginForm = document.getElementById('loginForm');
@@ -207,6 +207,32 @@ function zeigeNoten() {
   }
 }
 
+function berechneGesamtDurchschnitt() {
+  let summe = 0;
+  let gesamtGewichtung = 0;
+
+  Object.keys(noten).forEach(fach => {
+    noten[fach].forEach(eintrag => {
+      summe += eintrag.note * (eintrag.gewichtung / 100);
+      gesamtGewichtung += eintrag.gewichtung / 100;
+    });
+  });
+
+  let durchschnitt = '-';
+  if (gesamtGewichtung > 0) {
+    durchschnitt = (summe / gesamtGewichtung).toFixed(2);
+  }
+  return durchschnitt;
+}
+
+// Beispiel: Gesamt-Durchschnitt anzeigen
+const gesamtDurchschnittSpan = document.getElementById('completeAverage');
+if (gesamtDurchschnittSpan) {
+  setInterval(() => {
+    gesamtDurchschnittSpan.textContent = `${berechneGesamtDurchschnitt()}`;
+  }, 1000);
+}
+
 // Note hinzufügen
 document.getElementById('noteHinzufuegenButton').onclick = () => {
   const note = parseFloat(document.getElementById('noteInput').value);
@@ -233,5 +259,5 @@ document.getElementById('noteHinzufuegenButton').onclick = () => {
 // Zurück zur Übersicht
 document.getElementById('backButton').onclick = () => {
   document.getElementById('notenDetails').style.display = 'none';
-  notenManager.style.display = 'block';
+  notenManager.style.display = 'flex';
 };

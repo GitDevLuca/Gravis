@@ -70,6 +70,7 @@ body {
   width: 75%;
   border-radius: 15px;
   flex-direction: column;
+  align-items: center;
   background: var(--md-sys-color-surface-container-high, #fff); /* Use MD token */
   color: var(--md-sys-color-on-surface, #000); /* Use MD token */
   box-shadow: 0 0px 10px 5px rgb(0 0 0 / 25%);
@@ -85,6 +86,10 @@ body {
 #notenManager .top-bar {
   flex-direction: row;
   justify-content: space-between;
+}
+
+#notenManager > h4 {
+  margin-top: 20px;
 }
 
 .top-bar {
@@ -109,7 +114,6 @@ body {
 }
 
 .fach-erstellen {
-  margin-top: 20px;
   text-align: center;
 }
 
@@ -118,7 +122,9 @@ body {
 .fach-erstellen md-filled-button, 
 #notenDetails > md-outlined-text-field, 
 #notenDetails md-filled-button, 
-#notenDetails md-outlined-button {
+#notenDetails md-outlined-button,
+#fachListeContainer,
+.kategorie-block {
   width: 100%;
   padding: 12px;
   margin: 10px 0;
@@ -146,7 +152,7 @@ body {
 }
 
 .fach-eintrag {
-  background: var(--md-sys-color-surface-container-low, #f9f9f9); /* Use MD token */
+  background: var(--md-sys-color-surface-variant, #f9f9f9); /* Use MD token */
   color: var(--md-sys-color-on-surface-variant, #000); /* Use MD token */
   padding: 10px;
   margin: 10px 0;
@@ -159,7 +165,7 @@ body {
 }
 
 .fach-eintrag:hover {
-  background: var(--md-sys-color-surface-container-lowest, #f4e9ff); /* Use MD token */
+  background: var(--md-sys-color-surface, #f4e9ff); /* Use MD token */
 }
 
 .fach-eintrag span {
@@ -237,7 +243,7 @@ body {
   --md-sys-color-on-background: #1C1B1F;
   --md-sys-color-surface: #FFFBFE;
   --md-sys-color-on-surface: #1C1B1F;
-  --md-sys-color-surface-variant: #E7E0EC;
+  --md-sys-color-surface-variant: #c1b2cb;
   --md-sys-color-on-surface-variant: #49454E;
   --md-sys-color-outline: #79747E;
   --md-sys-color-shadow: #000000;
