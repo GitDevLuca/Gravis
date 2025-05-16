@@ -131,10 +131,10 @@ function zeigeNoten() {
   const eintraege = noten[aktuellesFach] || [];
 
   eintraege.forEach((eintrag, index) => {
-    const li = document.createElement('li');
+    const li = document.createElement('md-list-item');
     li.textContent = `Note: ${eintrag.note}, Gewichtung: ${eintrag.gewichtung}%`;
 
-    const btn = document.createElement('button');
+    const btn = document.createElement('md-filled-button');
     btn.textContent = 'Löschen';
     btn.onclick = () => {
       eintraege.splice(index, 1);
