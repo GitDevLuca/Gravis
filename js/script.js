@@ -1,6 +1,6 @@
 // Login-Daten
-const benutzername = 'admin';
-const passwort = '1234';
+const benutzername = '1';
+const passwort = '';
 
 // DOM-Elemente
 const loginForm = document.getElementById('loginForm');
@@ -33,7 +33,7 @@ submitLogin.onclick = () => {
 
   if (user === benutzername && pw === passwort) {
     loginForm.style.display = 'none';
-    notenManager.style.display = 'block';
+    notenManager.style.display = 'flex';
     loginError.style.display = 'none';
     error.style.display = 'none';
   } else {
@@ -118,7 +118,7 @@ function fachHinzufuegen() {
 function fachAuswaehlen(fach) {
   aktuellesFach = fach;
   document.getElementById('fachNameDetails').textContent = fach;
-  document.getElementById('notenDetails').style.display = 'block';
+  document.getElementById('notenDetails').style.display = 'flex';
   notenManager.style.display = 'none';
   zeigeNoten();
 }
@@ -172,6 +172,11 @@ document.getElementById('noteHinzufuegenButton').onclick = () => {
   const gewichtung = parseFloat(document.getElementById('gewichtungInput').value);
 
   if (isNaN(note) || isNaN(gewichtung)) {
+    alert("Bitte gültige Note und Gewichtung eingeben.");
+    return;
+  }
+
+  if (note > 6 || note < 1){
     alert("Bitte gültige Note und Gewichtung eingeben.");
     return;
   }

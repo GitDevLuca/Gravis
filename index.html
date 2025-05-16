@@ -53,22 +53,35 @@
     <!-- Hauptbereich -->
     <div id="notenManager" style="display:none;">
       <div class="top-bar">
-        <h2>Gravis Notenmanager</h2>
-        <button id="logoutButton">Logout</button>
+        <h2 class="md-typescale-display-small">Gravis Notenmanager</h2>
+        <md-filled-tonal-button id="logoutButton">Logout</md-filled-tonal-button>
       </div>
 
       <div class="fach-erstellen">
-        <input type="text" id="fachNameInput" placeholder="Fachname" />
-        <select id="kategorieSelect">
-          <option disabled selected>Bitte auswählen</option>
-          <option value="Module">Module</option>
-          <option value="Allgemeinbildung">Allgemeinbildung</option>
-          <option value="Englisch">Englisch</option>
-          <option value="Mathematik">Mathematik</option>
-          <option value="Sport">Sport</option>
-        </select>
-        
-        <button onclick="fachHinzufuegen()">Fach hinzufügen</button>
+        <md-outlined-text-field label="Fachname" id="fachNameInput"></md-outlined-text-field>
+        <md-outlined-select id="kategorieSelect" required>
+          <md-select-option aria-label="blank" disabled selected>Bitte auswählen</md-select-option>
+          <md-select-option value="Module">
+            <div slot="headline">Module</div>
+          </md-select-option>
+          <md-select-option value="Allgemeinbildung - GES">
+            <div slot="headline">Allgemeinbildung - GES</div>
+          </md-select-option>
+          <md-select-option value="Allgemeinbildung - SUK">
+            <div slot="headline">Allgemeinbildung - SUK</div>
+          </md-select-option>
+          <md-select-option value="Englisch">
+            <div slot="headline">Englisch</div>
+          </md-select-option>
+          <md-select-option value="Mathematik">
+            <div slot="headline">Mathematik</div>
+          </md-select-option>
+          <md-select-option value="Sport">
+            <div slot="headline">Sport</div>
+          </md-select-option>
+        </md-outlined-select>
+
+        <md-filled-button onclick="fachHinzufuegen()">Fach hinzufügen</md-filled-button>
       </div>
 
       <div id="fachListeContainer"></div>
@@ -76,12 +89,14 @@
 
     <!-- Noten-Details -->
     <div id="notenDetails" style="display:none;">
-      <h3>Noten für <span id="fachNameDetails"></span></h3>
+      <div class="top-bar">
+        <h3>Noten für <span id="fachNameDetails"></span></h3>
+      </div>
       <ul id="notenListeDetails"></ul>
-      <input type="number" id="noteInput" placeholder="Note (1 - 6)" step="0.1" />
-      <input type="number" id="gewichtungInput" placeholder="Gewichtung %" />
-      <button id="noteHinzufuegenButton">Note hinzufügen</button>
-      <button id="backButton">Zurück</button>
+      <md-outlined-text-field type="number" id="noteInput" placeholder="Note (1 - 6)" step="0.1" min="1" max="6"></md-outlined-text-field>
+      <md-outlined-text-field type="number" id="gewichtungInput" placeholder="Gewichtung %"></md-outlined-text-field>
+      <md-filled-button id="noteHinzufuegenButton">Note hinzufügen</md-filled-button>
+      <md-outlined-button id="backButton">Zurück</md-outlined-button>
     </div>
 
     <script src="js/script.js"></script>
