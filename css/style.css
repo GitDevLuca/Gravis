@@ -96,7 +96,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: var(--md-sys-color-surface-variant, #353535); /* Use MD token */
+  background-color: var(--md-sys-color-inverse-primary, #353535); /* Use MD token */
   color: var(--md-sys-color-on-surface-variant, white); /* Use MD token */
   padding: 15px;
   border-radius: 15px;
